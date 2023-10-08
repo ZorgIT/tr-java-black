@@ -9,6 +9,18 @@ public class ParametrizedClass {
 //        Info<Integer> info2 = new Info<>(18);
 //        System.out.println(info2);
 //        Integer s1  = info2.getValue();
+
+//        Info<Buss> info3 = new Info<>(new Buss());
+//        System.out.println(info3);
+//        Buss b1 = info3.getValue();
+
+        Info<Integer> info4 = new Info<>(18);
+        System.out.println(info4);
+        Integer d1  = info4.getValue();
+
+        Info<Double> info5 = new Info<>(3.14);
+        System.out.println(info5);
+        Double d13  = info5.getValue();
     }
 
 //    public void abc(Info<String> info) {
@@ -21,7 +33,7 @@ public class ParametrizedClass {
 }
 
 
-class Info <T>{
+class Info <T extends Number>{
     private T value;
     public Info(T value) {
         this.value = value;
@@ -35,6 +47,8 @@ class Info <T>{
     }
 }
 
+//interface  I1{}
+//interface  I2{}
 
 //class Parent {
 //    public void abc(Info<String> info) {
@@ -46,4 +60,8 @@ class Info <T>{
 //    public void abc(Info<Integer> info) {
 //        String s = info.getValue();
 //    }
+//}
+
+class Buss {
+
 }
