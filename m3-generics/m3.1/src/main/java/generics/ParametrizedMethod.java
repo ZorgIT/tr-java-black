@@ -28,3 +28,5 @@ class GenMethod{
         return al.get(1);
     }
 }
+
+
