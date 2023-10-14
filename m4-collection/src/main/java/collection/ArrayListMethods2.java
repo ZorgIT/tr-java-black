@@ -10,17 +10,18 @@ public class ArrayListMethods2 {
         Student st3 = new Student("ELena", 'f', 19, 1, 8.9);
         Student st4 = new Student("Petr", 'm', 35, 4, 7);
         Student st5 = new Student("Mariya", 'f', 23, 3, 7.4);
-        ArrayList<Student> sutdentList =  new ArrayList<>();
-        sutdentList.add(st1);
-        sutdentList.add(st2);
-        sutdentList.add(st3);
-        sutdentList.add(st4);
-        sutdentList.add(st5);
-        System.out.println(sutdentList);
+        ArrayList<Student> studentList =  new ArrayList<>();
+        studentList.add(st1);
+        studentList.add(st2);
+        studentList.add(st3);
+        studentList.add(st4);
+        studentList.add(st5);
+        System.out.println(studentList);
         Student st6 = new Student("Mariya", 'f', 23, 3, 7.4);
-        //sutdentList.add(st6);
-        sutdentList.remove(st6);
-        System.out.println(sutdentList);
+        //sttdentList.add(st6);
+//        studentList.remove(st6);
+        int index = studentList.indexOf(st6);
+        System.out.println(studentList.get(index));
     }
 }
 
