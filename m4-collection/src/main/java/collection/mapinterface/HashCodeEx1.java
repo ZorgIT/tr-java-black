@@ -14,22 +14,36 @@ public class HashCodeEx1 {
         map.put(st2, 8.5);
         map.put(st3, 9.5);
         System.out.println(map);
-        Student st4 = new Student("Zaur", "Tregulov", 3);
-        Student st5 = new Student("Igor", "Sidorov", 4);
-//        boolean result = map.containsKey(st4);
-//        System.out.println("Result =" + result);
+        System.out.println(map.containsKey(st1));
         System.out.println(st1.hashCode());
-        System.out.println(st5.hashCode());
-        System.out.println(st4.hashCode());
+        st1.course=4;
+        System.out.println(st1.hashCode());
+        System.out.println(map.containsKey(st1));
+
+
+
+//
+//        Student st4 = new Student("Zaur", "Tregulov", 3);
+//        Student st5 = new Student("Igor", "Sidorov", 4);
+////        boolean result = map.containsKey(st4);
+////        System.out.println("Result =" + result);
+//        System.out.println(st1.hashCode());
+//        System.out.println(st5.hashCode());
+//        System.out.println(st4.hashCode());
+//
+//        for (Map.Entry<Student, Double> entry : map.entrySet()) {
+//            System.out.println(entry.getKey() + ": " + entry.getValue());
+//        }
+//        Map<Integer, Student> map2 = new HashMap<>(16, 0.75f);
 
     }
 }
 
 
-class Student {
-    String name;
-    String surname;
-    int course;
+final class Student {
+    final String name;
+    final String surname;
+    final int course;
 
     public Student(String name, String surname, int course) {
         this.name = name;
@@ -58,6 +72,6 @@ class Student {
 
     @Override
     public int hashCode() {
-        return name.length()*7 + surname.length()*11 + course*53;
+        return name.length() * 7 + surname.length() * 11 + course * 53;
     }
 }
