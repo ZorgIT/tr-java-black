@@ -16,7 +16,7 @@ public class HashCodeEx1 {
         System.out.println(map);
         System.out.println(map.containsKey(st1));
         System.out.println(st1.hashCode());
-        st1.course=4;
+//        st1.course=4;
         System.out.println(st1.hashCode());
         System.out.println(map.containsKey(st1));
 
@@ -40,7 +40,7 @@ public class HashCodeEx1 {
 }
 
 
-final class Student {
+final class Student implements Comparable<Student>{
     final String name;
     final String surname;
     final int course;
@@ -62,16 +62,21 @@ final class Student {
                 '}';
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Student student = (Student) o;
-        return course == student.course && Objects.equals(name, student.name) && Objects.equals(surname, student.surname);
-    }
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        Student student = (Student) o;
+//        return course == student.course && Objects.equals(name, student.name) && Objects.equals(surname, student.surname);
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return name.length() * 7 + surname.length() * 11 + course * 53;
+//    }
 
     @Override
-    public int hashCode() {
-        return name.length() * 7 + surname.length() * 11 + course * 53;
+    public int compareTo(Student o) {
+        return this.name.compareTo(o.name);
     }
 }
