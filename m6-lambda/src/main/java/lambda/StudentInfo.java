@@ -1,6 +1,8 @@
 package lambda;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class StudentInfo {
 
@@ -57,6 +59,20 @@ class Test {
         students.add(st5);
 
         StudentInfo info = new StudentInfo();
+        Collections.sort(students, new Comparator<Student>() {
+            @Override
+            public int compare(Student s1, Student s2) {
+                return s1.course - s2.course;
+            }
+        }); //анонимный класс
+        System.out.println(students);
+
+        Collections.sort(students,
+                (stud1, stud2) -> stud1.course-stud2.course); //лямбда
+
+
+        System.out.println(students);
+
 //        info.testStudents(students, new CheckOverGrade());
 //        System.out.println("----------------------");
 //        info.testStudents(students, new StudentChecks() {
@@ -65,24 +81,35 @@ class Test {
 //                return s.age < 30;
 //            }
 //        });
-        System.out.println("----------------------");
-        info.testStudents(students, (Student s) -> {
-            return s.age < 30;
-        });
-        System.out.println("----------------------");
-        info.testStudents(students, (Student s) -> {
-            return s.avgGrade > 8;
-        });
+//        System.out.println("----------------------");
+//        info.testStudents(students, (Student s) -> {
+//            return s.age < 30;
+//        });
+//        System.out.println("----------------------");
+////        info.testStudents(students, (Student s) -> {
+////            return s.avgGrade > 8;
+////        }); // более полный способ записи лямбды
+//        info.testStudents(students, p -> p.avgGrade > 8); // самый короткий
+//        // способ лямбды
+//
+//        info.testStudents(students, p -> {
+//            System.out.println("hello ");
+//            return p.avgGrade > 8;
+//        });
+//
+//        StudentChecks sc = (Student s) -> {
+//            return s.avgGrade > 8;
+//        }; //вынос лямбды в переменнюу
+//
+//        info.testStudents(students, sc);
+//
+//
+//
+//        System.out.println("----------------------");
+//        info.testStudents(students, (Student s) -> {
+//            return s.age > 20 && s.avgGrade < 9.3 && s.sex == 'f';
+//        });
 
-        System.out.println("----------------------");
-        info.testStudents(students, (Student s) -> {
-            return s.age > 20 && s.avgGrade < 9.3 && s.sex == 'f';
-        });
-//        info.printStudentsOverGrade(students, 8);
-//        System.out.println("----------------------");
-//        info.printStudentsUnderAge(students, 30);
-//        System.out.println("----------------------");
-//        info.printStudentsMixCondition(students, 20, 9.5, 'f');
 
     }
 }
