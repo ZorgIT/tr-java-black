@@ -3,12 +3,13 @@ package lambda;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.function.Predicate;
 
 public class StudentInfo {
 
-    void testStudents(ArrayList<Student> al, StudentChecks sc) {
+    void testStudents(ArrayList<Student> al, Predicate<Student> pr) {
         for (Student s : al) {
-            if (sc.check(s)) {
+            if (pr.test(s)) {
                 System.out.println(s);
             }
         }
@@ -59,19 +60,17 @@ class Test {
         students.add(st5);
 
         StudentInfo info = new StudentInfo();
-        Collections.sort(students, new Comparator<Student>() {
-            @Override
-            public int compare(Student s1, Student s2) {
-                return s1.course - s2.course;
-            }
-        }); //анонимный класс
-        System.out.println(students);
-
-        Collections.sort(students,
-                (stud1, stud2) -> stud1.course-stud2.course); //лямбда
-
-
-        System.out.println(students);
+//        Collections.sort(students, new Comparator<Student>() {
+//            @Override
+//            public int compare(Student s1, Student s2) {
+//                return s1.course - s2.course;
+//            }
+//        }); //анонимный класс
+////        System.out.println(students);
+////
+////        Collections.sort(students,
+//////                (stud1, stud2) -> stud1.course-stud2.course); //лямбда
+//        System.out.println(students);
 
 //        info.testStudents(students, new CheckOverGrade());
 //        System.out.println("----------------------");
@@ -111,16 +110,54 @@ class Test {
 //        });
 
 
+        //PREDICATE
+
+/*
+        info.testStudents(students, (Student p) -> {
+            return p.avgGrade > 8;
+        });
+
+        info.testStudents(students, p -> {
+            System.out.println("hello");
+            return p.avgGrade > 8;
+        });*/
+
+
+        //Объединение
+        Predicate<Student> p1 = student -> student.avgGrade > 7.5;
+        Predicate<Student> p2 = student -> student.sex == 'm';
+
+
+        //info.testStudents(students, p1.and(p2));
+        //info.testStudents(students, p1.negate())); //negate инвертирует фильтр
+        info.testStudents(students, p1.or(p2));
+
+/*
+        System.out.println("----------------------");
+
+        info.testStudents(students, (Student p) -> {
+            return p.age < 30;
+        });
+
+        System.out.println("----------------------");
+        info.testStudents(students,
+                (Student p) -> {
+                    return p.age > 20 && p.avgGrade < 9.3 && p.sex == 'f';
+                });
+                */
+
+
+
     }
 }
 
-interface StudentChecks {
-    boolean check(Student s);
-}
+//interface StudentChecks {
+//    boolean check(Student s);
+//}
 
-class CheckOverGrade implements StudentChecks {
-    @Override
-    public boolean check(Student s) {
-        return s.avgGrade > 8;
-    }
-}
+//class CheckOverGrade implements StudentChecks {
+//    @Override
+//    public boolean check(Student s) {
+//        return s.avgGrade > 8;
+//    }
+//}
