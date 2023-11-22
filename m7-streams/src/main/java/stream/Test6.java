@@ -14,10 +14,11 @@ public class Test6 {
         Stream<Integer> stream5 = Stream.of(1,2,3,4,5,1,2,3);
 //        stream5.distinct().forEach(System.out::println); //уникальные элементы
 
-        System.out.println(stream5.count());
-        System.out.println(stream5.distinct().count());//стрим нельзя
-        // переиспользовать
+//        System.out.println(stream5.count());
+//        System.out.println(stream5.distinct().count());//стрим нельзя
+//        // переиспользовать
 
+        System.out.println(stream5.distinct().peek(System.out::println).count());
 
 
     }
