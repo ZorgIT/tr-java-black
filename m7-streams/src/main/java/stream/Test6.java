@@ -11,6 +11,13 @@ public class Test6 {
 //                return el%2==0;
 //        }).collect(Collectors.toList());
 
+        Stream<Integer> stream5 = Stream.of(1,2,3,4,5,1,2,3);
+//        stream5.distinct().forEach(System.out::println); //уникальные элементы
+
+        System.out.println(stream5.count());
+        System.out.println(stream5.distinct().count());//стрим нельзя
+        // переиспользовать
+
 
 
     }
