@@ -25,11 +25,14 @@ public class Test2 {
 //                .filter(byAge).collect(Collectors.toList());
 //        System.out.println(sorted);
 
-        students = students.stream().filter(element ->
+//        students = students.stream().filter(element ->
+//                element.getAge() > 22 && element.getAvgGrade() < 7.2)
+//                .collect(Collectors.toList());
+//        System.out.println(students);
+        Stream<Student> myStream = Stream.of(st1, st2, st3, st4);
+        myStream.filter(element ->
                 element.getAge() > 22 && element.getAvgGrade() < 7.2)
                 .collect(Collectors.toList());
-        System.out.println(students);
-
 
 
 
