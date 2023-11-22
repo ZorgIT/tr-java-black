@@ -47,4 +47,11 @@ public class Test1 {
 
 
     }
+
+    public static String getOrDefault(List<String> list, int ind, String defaultValue) {
+        if (list.size() <ind) {
+            return list.get(ind);
+        } else
+        return defaultValue;
+    }
 }
