@@ -19,6 +19,11 @@ public class Test2 {
         students.add(st3);
         students.add(st4);
         students.add(st5);
+
+        students = students.stream().sorted((x,y) ->
+                                             x.getName().compareTo(y.getName()))
+                .collect(Collectors.toList());
+        System.out.println(students);
 //        Predicate<Student> byAge = s -> s.getAge() > 25;
 //
 //        List<Student> sorted = students.stream()
