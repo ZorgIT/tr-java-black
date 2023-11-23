@@ -20,14 +20,14 @@ public class Test2 {
         students.add(st4);
         students.add(st5);
 
-        students.stream().map(element -> {
+        Student first = students.stream().map(element -> {
                     element.setName(element.getName().toUpperCase());
                     return element;
                 })
                 .filter(element -> element.getSex() == 'f')
                 .sorted((x, y) ->x.getAge() - y.getAge()) //сортировка по
         // возрасту
-                .forEach(System.out::println);
+                .findFirst().get(); //get или ispresent
 
 
 
