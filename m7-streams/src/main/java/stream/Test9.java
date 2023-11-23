@@ -2,6 +2,7 @@ package stream;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Test9 {
     public static void main(String[] args) {
@@ -17,6 +18,33 @@ public class Test9 {
         students.add(st4);
         students.add(st5);
 
+        List<Integer> courses = students.stream()
+                .mapToInt(el -> el.getCourse())
+                .boxed()//обязаны использовать для конвертации int to Integer
+                .collect(Collectors.toList());
+        System.out.println(courses);
+
+//        List<Double> avgGrade = students.stream()
+//                .mapToDouble(el-> el.getAvgGrade())
+//                .boxed()//обязаны использовать для конвертации int to Integer
+//                .collect(Collectors.toList());
+//        System.out.println(avgGrade);
+
+        int sum = students.stream().mapToInt(el -> el.getCourse()).sum();
+        System.out.println(sum);
+
+        double avg =
+                students.stream().mapToInt(el -> el.getCourse()).average().getAsDouble();
+        System.out.println(avg);
+
+        int min = students.stream().mapToInt(el -> el.getCourse()).min().getAsInt();
+        System.out.println(min);
+
+        int max =
+                students.stream().mapToInt(el -> el.getCourse()).max().getAsInt();
+        System.out.println(max);
+
+
 //        ============
 //        Student min = students.stream().min((x,y)->x.getAge()-y.getAge()).get();
 //        System.out.println(min);
@@ -26,10 +54,15 @@ public class Test9 {
 //        System.out.println(max);
 
 //        ============
-        students.stream().filter(e -> e.getAge() > 20).forEach(System.out::println);
-        System.out.println("-----------------------------------------");
-        students.stream().filter(e -> e.getAge() > 20).limit(2).forEach(System.out::println);
-        System.out.println("-----------------------------------------");
-        students.stream().filter(e -> e.getAge() > 20).skip(2).forEach(System.out::println);
+
+////        ============
+//        students.stream().filter(e -> e.getAge() > 20).forEach(System.out::println);
+//        System.out.println("-----------------------------------------");
+//        students.stream().filter(e -> e.getAge() > 20).limit(2).forEach(System.out::println);
+//        System.out.println("-----------------------------------------");
+//        students.stream().filter(e -> e.getAge() > 20).skip(2).forEach(System.out::println);
+////        ============
+
+
     }
 }
